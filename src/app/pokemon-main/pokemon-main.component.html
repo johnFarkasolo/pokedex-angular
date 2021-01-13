@@ -1,0 +1,13 @@
+<div class="pokemon col-md-6">
+  <div class="pokemon__container" *ngFor="let pokemon of pokemons">
+    <div class="pokemon__container-img">
+      <img [src]="pokemon.url" alt="Pokemon">
+    </div>
+    <div class="pokemon__container-info">
+      <i>#{{pokemon.id}}</i> - <span>{{pokemon.name}}</span>
+      <p *ngFor="let elem of pokemon.types">
+        <small >type: {{elem.type.name}}</small>
+      </p>
+    </div>
+  </div>
+</div>
