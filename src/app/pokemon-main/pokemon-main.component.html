@@ -1,15 +1,19 @@
 <div class="pokemon">
   <div class="container__search">
-    <input type="text" placeholder="search pokemon">
+    <input type="text" placeholder="search pokemon" [(ngModel)]="query">
   </div>
   <div class="pokemon__grid" *ngIf="pokemon">
-    <div class="pokemon__column" *ngFor="let item of pokemon">
+    <div class="pokemon__column" *ngFor="let item of pokemon | search: query" [routerLink]="['/pokemon', item?.name]">
       <img [src]="item?.sprite" alt="{{item?.name}}">
       <p><i>#{{item.id}}</i> - {{item?.name}}</p>
+      <div class="types">
+<!--        // next stage change text in icon-->
+        <span *ngFor="let type of item.types">{{type.type.name}}</span>
+      </div>
     </div>
   </div>
   <div class="container__button">
     <!--    // next stage change to lazyload-->
-    <button>Load more</button>
+    <button (click)="onSubmit()">Load more</button>
   </div>
 </div>
