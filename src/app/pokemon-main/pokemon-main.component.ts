@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {PokemonService} from '../shared/pokemon.service';
 import {Router} from '@angular/router';
-import {PokemonDetail} from '../models/pokemon.detail';
+import {PokemonDetail} from '../shared/models/pokemon.detail';
 import {FormControl} from '@angular/forms';
-import {PokemonList} from '../models/pokemon.list';
-import {Observable} from 'rxjs';
+import {PokemonList} from '../shared/models/pokemon.list';
 
 @Component({
   selector: 'app-pokemon-main',
@@ -17,11 +16,16 @@ export class PokemonMainComponent implements OnInit {
   public sub: any;
   public query: string;
   public offset = 0;
-  public limit = 20;
+  public limit = 25;
 
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit(): void{
+    this.getPokemons();
+  }
+
+  onSubmit() {
+    this.offset += 25;
     this.getPokemons();
   }
 
@@ -48,7 +52,6 @@ export class PokemonMainComponent implements OnInit {
           stats: data['stats'],
           species: data['species'].url,
         };
-
         this.pokemon.push(pokemonData);
         this.pokemon.sort((array, order) => array.id - order.id);
       });
