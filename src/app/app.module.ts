@@ -7,6 +7,7 @@ import {PokemonDetailComponent} from './pokemon-detail/pokemon-detail.component'
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {SearchPipe} from './shared/pipes/search.pipe';
+import { PokemonAboutComponent } from './pokemon-about/pokemon-about.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import {SearchPipe} from './shared/pipes/search.pipe';
     PokemonMainComponent,
     PokemonDetailComponent,
     SearchPipe,
+    PokemonAboutComponent,
   ],
   imports: [
     BrowserModule,

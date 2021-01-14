@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {PokemonService} from '../shared/pokemon.service';
 import {Router} from '@angular/router';
-import {PokemonDetail} from '../models/pokemon.detail';
+import {PokemonDetail} from '../shared/models/pokemon.detail';
 import {FormControl} from '@angular/forms';
-import {PokemonList} from '../models/pokemon.list';
+import {PokemonList} from '../shared/models/pokemon.list';
 
 @Component({
   selector: 'app-pokemon-main',
