@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from '../data.service';
 import { Router } from '@angular/router';
+import {PokemonDetail} from '../models/pokemon.detail';
 
 @Component({
   selector: 'app-pokemon-main',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./pokemon-main.component.scss']
 })
 export class PokemonMainComponent implements OnInit {
-  pokemons = [];
+  pokemons: PokemonDetail[] = [];
 
   constructor(private dataService: DataService, private router: Router) { }
 
@@ -25,12 +26,14 @@ export class PokemonMainComponent implements OnInit {
             pokemonData = {
               id: uniqRes.id,
               name: uniqRes.name,
-              types: uniqRes.types,
-              url: `https://pokeres.bastionbot.org/images/pokemon/${uniqRes.id}.png`
+              url: `https://pokeres.bastionbot.org/images/pokemon/${uniqRes.id}.png`,
+              types: uniqRes.types
             };
             this.pokemons.push(pokemonData);
           });
       });
     });
   }
+
+
 }
