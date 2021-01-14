@@ -1,19 +1,13 @@
 export class PokemonList {
   id: number;
   name: string;
-  url: string;
-  types: Type[];
-
-  constructor() {
-    this.name = '';
-    this.url = null;
-    this.types = [];
-  }
+  sprite: string;
+  // types: Type[];
 }
 
-class Type {
-  slot: number;
-  type: {
-    name: string
-  };
-}
+// class Type {
+//   slot: number;
+//   type: {
+//     name: string
+//   };
+// }

@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DataService} from '../data.service';
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
 import {PokemonDetail} from '../models/pokemon.detail';
+import {FormControl} from '@angular/forms';
+import {PokemonList} from '../models/pokemon.list';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-pokemon-main',
@@ -9,31 +12,30 @@ import {PokemonDetail} from '../models/pokemon.detail';
   styleUrls: ['./pokemon-main.component.scss']
 })
 export class PokemonMainComponent implements OnInit {
-  pokemons: PokemonDetail[] = [];
+  pokemons: PokemonList[] = [];
+  isLoading = false;
 
-  constructor(private dataService: DataService, private router: Router) { }
+  constructor(private dataService: DataService, private router: Router) {
+  }
 
   ngOnInit(): void {
-    this.getPokemons();
+    this.loadMore();
   }
 
-  getPokemons() {
-    let pokemonData;
-    this.dataService.getPokemons().subscribe((response: any) => {
-      response.results.map((result) => {
-        this.dataService.getMoreData(result.name)
-          .subscribe((uniqRes: any) => {
-            pokemonData = {
-              id: uniqRes.id,
-              name: uniqRes.name,
-              url: `https://pokeres.bastionbot.org/images/pokemon/${uniqRes.id}.png`,
-              types: uniqRes.types
-            };
-            this.pokemons.push(pokemonData);
-          });
-      });
+  loadMore() {
+    this.isLoading = true;
+
+    return this.dataService.getPokemons(this.pokemons.length, 20)
+      .subscribe(res => {
+        // @ts-ignore
+        const pokemon = res.map(p => {
+           p.imageLoaded = true;
+           return p;
+         });
+        this.pokemons = this.pokemons.concat(pokemon);
+        console.log(this.pokemons);
+        this.isLoading = false;
     });
   }
-
 
 }
