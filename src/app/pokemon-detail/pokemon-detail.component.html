@@ -1,0 +1,23 @@
+<div class="pokemonDetail">
+  <div class="pokemonDetail__container" *ngFor="let pokemon of pokemons">
+    <div class="pokemonDetail__container-info">
+        <div class="info__img">
+          <img [src]="pokemon.url" alt="{{pokemon.name}}">
+        </div>
+      <div class="info__about">
+        <i>#{{pokemon.id}}</i> - <span>{{pokemon.name}}</span>
+        <p *ngFor="let elem of pokemon.types">
+          <small >type: {{elem.type.name}}</small>
+        </p>
+      </div>
+    </div>
+    <div class="pokemonDetail__container-stats">
+      <div class="spells__box">
+
+      </div>
+      <div class="spells__box">
+
+      </div>
+    </div>
+  </div>
+</div>
