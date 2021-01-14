@@ -1,17 +1,15 @@
 <div class="pokemon">
-  <a
-     routerLink="pokemon/{{pokemon.id}}"
-     *ngFor="let pokemon of pokemons"
-     class="pokemon__container"
-  >
-    <div class="pokemon__container-img">
-      <img [src]="pokemon.sprite" alt="Pokemon">
+  <div class="container__search">
+    <input type="text" placeholder="search pokemon">
+  </div>
+  <div class="pokemon__grid" *ngIf="pokemon">
+    <div class="pokemon__column" *ngFor="let item of pokemon">
+      <img [src]="item?.sprite" alt="{{item?.name}}">
+      <p><i>#{{item.id}}</i> - {{item?.name}}</p>
     </div>
-    <div class="pokemon__container-info">
-      <i>#{{pokemon.id}}</i> - <span>{{pokemon.name}}</span>
-      <!--      <p *ngFor="let elem of pokemon.types">-->
-      <!--        <small >type: {{elem.type.name}}</small>-->
-      <!--      </p>-->
-    </div>
-  </a>
+  </div>
+  <div class="container__button">
+    <!--    // next stage change to lazyload-->
+    <button>Load more</button>
+  </div>
 </div>

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DataService} from '../data.service';
+import {PokemonService} from '../shared/pokemon.service';
 import {Router} from '@angular/router';
 import {PokemonDetail} from '../models/pokemon.detail';
 import {FormControl} from '@angular/forms';
@@ -12,30 +12,46 @@ import {Observable} from 'rxjs';
   styleUrls: ['./pokemon-main.component.scss']
 })
 export class PokemonMainComponent implements OnInit {
-  pokemons: PokemonList[] = [];
-  isLoading = false;
+  public pokemons: any;
+  public pokemon: any = [];
+  public sub: any;
+  public query: string;
+  public offset = 0;
+  public limit = 20;
 
-  constructor(private dataService: DataService, private router: Router) {
+  constructor(private pokemonService: PokemonService) { }
+
+  ngOnInit(): void{
+    this.getPokemons();
   }
 
-  ngOnInit(): void {
-    this.loadMore();
+  getPokemons() {
+    this.pokemonService
+      .getPokemonList(this.offset, this.limit)
+      .subscribe((data: PokemonList[]) => {
+        this.pokemons = data;
+        Object.keys(this.pokemons.results).map(key => {
+          this.displayPokemon(this.pokemons.results[key].name);
+        });
+      });
   }
 
-  loadMore() {
-    this.isLoading = true;
+  displayPokemon(id: any) {
+    this.pokemonService
+      .getPokemonDetail(id)
+      .subscribe((data: PokemonDetail) => {
+        const pokemonData = {
+          id: data.id,
+          name: data.name,
+          sprite: data.sprites.front_default,
+          types: data['types'],
+          stats: data['stats'],
+          species: data['species'].url,
+        };
 
-    return this.dataService.getPokemons(this.pokemons.length, 20)
-      .subscribe(res => {
-        // @ts-ignore
-        const pokemon = res.map(p => {
-           p.imageLoaded = true;
-           return p;
-         });
-        this.pokemons = this.pokemons.concat(pokemon);
-        console.log(this.pokemons);
-        this.isLoading = false;
-    });
+        this.pokemon.push(pokemonData);
+        this.pokemon.sort((array, order) => array.id - order.id);
+      });
   }
 
 }

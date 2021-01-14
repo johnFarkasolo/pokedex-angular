@@ -1,26 +1,9 @@
 export class PokemonDetail {
   id: number;
   name: string;
-  types: Type[];
-  url: string;
-  stats: Stat[];
-
-  constructor() {
-    this.types = [];
-  }
+  sprites: Sprites;
 }
 
-class Type {
-  slot: number;
-  type: {
-    name: string;
-  };
+export interface Sprites {
+  front_default: string;
 }
-
-class Stat {
-  base_stat: number;
-  stat: {
-    name: string
-  };
-}
-

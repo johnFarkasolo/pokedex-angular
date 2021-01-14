@@ -1,13 +1,5 @@
-export class PokemonList {
-  id: number;
-  name: string;
-  sprite: string;
-  // types: Type[];
+export interface PokemonList {
+  count: number;
+  next: string;
+  results?: [];
 }
-
-// class Type {
-//   slot: number;
-//   type: {
-//     name: string
-//   };
-// }
