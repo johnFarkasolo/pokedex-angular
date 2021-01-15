@@ -1,41 +1,45 @@
 @import '../../scss/variebles', '../../scss/mixins';
 
 .pokemon {
-  background-color: #06153e;
   margin: 0 auto;
+  max-width: $layout-sm;
 
   &__grid:before {
     content: '';
     position: absolute;
     width: 100%;
     height: 3px;
-    background-color: #4169E1;
+    background-color: $strip-color;
     top: -10px;
   }
 
   &__grid {
     position: relative;
-    max-width: $layout-sm;
     margin: 0 auto;
     width: 95%;
     display: grid;
     grid-auto-rows: 250px;
     grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
     grid-gap: 15px;
-    font-family: $secondary-font;
+    font-family: $primary-font;
     min-height: 80vh;
   }
 
   &__column {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    background-color: #102464;
-    color: #9e9e9e;
+    background-color: $secondary-theme-color;
+    color: $white-color;
     border-radius: 10px;
     cursor: pointer;
-    transition: all .25ms ease-in-out;
-    box-shadow: 0px 6px 10px 1px rgba(36, 37, 38, 0.08);
+    transition: background-color .5s ease-in-out;
+
+    p {
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
 
     img {
       width: 120px;
@@ -44,11 +48,15 @@
 
     &:focus {
       outline: none;
+      background-color: $hover-color;
+    }
+
+    &:active {
+      background-color: $hover-color;
     }
 
     &:hover {
-      background-color: tomato;
-      color: antiquewhite;
+      background-color: $hover-color;
     }
 
     .types {
@@ -58,6 +66,11 @@
       span {
         padding-left: 7px;
       }
+
+      .icon {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 
@@ -65,10 +78,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 auto;
+    margin: 0 20px;
     border-radius: 10px;
-    width: 68%;
-    padding: 15px 6px 25px 6px;
+    padding: 15px 0 25px 0;
+
+    .logo {
+      @include logo;
+      background-image: url('../../assets/icons/logo.png.png');
+    }
 
     input {
       color: #9e9e9e;
@@ -78,7 +95,7 @@
       font-weight: 400;
       padding: 10px 15px;
       width: 320px;
-      background-color: #102464;
+      background-color: $secondary-theme-color;
 
       &:focus {
         outline: none;
@@ -100,17 +117,41 @@
       padding: 10px;
       border-radius: 8px;
       border: none;
-      background-color: tomato;
+      background-color: $secondary-theme-color;
       color: white;
       width: 200px;
       font-size: 15px;
       cursor: pointer;
-    }
 
-    &:focus {
-      outline: none;
+      &:hover {
+        background-color: $hover-color;
+      }
+
+      &:focus {
+        outline: none;
+      }
     }
   }
-
 }
 
+@media only screen and (max-width: $layout-xs) {
+  .container__search {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: $layout-xxs) {
+  .pokemon {
+    &__grid {
+      width: 75%;
+    }
+    .container__search {
+      input {
+        width: 80%;
+
+      }
+    }
+  }
+}

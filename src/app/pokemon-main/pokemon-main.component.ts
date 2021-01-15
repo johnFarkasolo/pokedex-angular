@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PokemonService} from '../shared/pokemon.service';
-import {Router} from '@angular/router';
 import {PokemonDetail} from '../shared/models/pokemon.detail';
-import {FormControl} from '@angular/forms';
 import {PokemonList} from '../shared/models/pokemon.list';
 
 @Component({
@@ -50,7 +48,7 @@ export class PokemonMainComponent implements OnInit {
           sprite: data.sprites.front_default,
           types: data['types'],
           stats: data['stats'],
-          species: data['species'].url,
+          isFavorite: false
         };
         this.pokemon.push(pokemonData);
         this.pokemon.sort((array, order) => array.id - order.id);

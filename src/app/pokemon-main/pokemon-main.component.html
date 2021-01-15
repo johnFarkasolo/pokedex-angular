@@ -1,6 +1,6 @@
 <div class="pokemon">
   <div class="container__search">
-    <h2>logo</h2>
+    <a [routerLink]="['/']" class="logo"></a>
     <input type="text" placeholder="search pokemon" [(ngModel)]="query">
   </div>
   <div class="pokemon__grid" *ngIf="pokemon">
@@ -9,8 +9,9 @@
       <img [src]="item?.sprite" alt="{{item?.name}}">
       <p><i>#{{item.id}}</i> - {{item?.name}}</p>
       <div class="types">
-<!--        // next stage change text in icon-->
-        <span *ngFor="let type of item.types">{{type.type.name}}</span>
+        <span *ngFor="let type of item.types">
+          <img class="icon" src="../../assets/icons/{{type.type.name}}.png" alt="">
+        </span>
       </div>
     </div>
   </div>

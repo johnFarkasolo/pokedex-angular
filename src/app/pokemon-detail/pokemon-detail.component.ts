@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {PokemonService} from '../shared/pokemon.service';
-import {ActivatedRoute} from '@angular/router';
 import {PokemonDetail} from '../shared/models/pokemon.detail';
 import {PokemonList} from '../shared/models/pokemon.list';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -10,7 +10,7 @@ import {PokemonList} from '../shared/models/pokemon.list';
   styleUrls: ['./pokemon-detail.component.scss']
 })
 export class PokemonDetailComponent implements OnInit {
-  public pokemons: PokemonList[] = [];
+  public pokemons: PokemonList[];
   public pokemon: PokemonDetail;
   public sub: any;
 
@@ -28,7 +28,6 @@ export class PokemonDetailComponent implements OnInit {
       this.pokemonService
         .getPokemonDetail(params.id)
         .subscribe((data: PokemonDetail) => {
-          console.log(data);
           this.pokemon = data;
         });
     });
@@ -38,16 +37,17 @@ export class PokemonDetailComponent implements OnInit {
     this.pokemonService
       .getPokemonDetail(id)
       .subscribe((data: PokemonDetail) => {
-        console.log(data);
         this.pokemon = data;
       });
   }
 
   submitPokemon(event) {
     event.preventDefault();
+    console.log(event.target)
     const form = new FormData(event.target);
     const id = form.get('id');
-    console.log(id);
+    console.log('id:', id);
+    console.log('form:', form);
     this.displayPokemon(id);
   }
 
