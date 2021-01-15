@@ -1,9 +1,18 @@
+$layout-xxs: 375px;
 $layout-xs: 768px;
 $layout-sm: 1024px;
 $layout-md: 1280px;
 $layout-lg: 1920px;
 
-$secondary-font: 'Permanent Marker'
+$primary-font: 'Permanent Marker';
+
+$strip-color: #1b2a57;
+$hover-color: #5669ae;
+$white-color: #fff;
+$secondary-theme-color: #2a3353;
+$primary-theme-color: #152143;
+
+//$primary-color:
 
 // yellow #fdcd3b, #ffed4b
 // vlue #2193b0 → #6dd5ed
@@ -39,5 +48,4 @@ $secondary-font: 'Permanent Marker'
 //  $error: #e8235e;
 //  $yellow: #f5a623;
 //  $dark: #1b1c23;
-//  $primary-color: white;
 //}
