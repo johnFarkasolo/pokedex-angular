@@ -1,1 +1,24 @@
-<p>pokemon-about works!</p>
+<div class="pokemon__about">
+  <div class="container">
+    <div class="container__title">
+      <div class="title__left">
+        <img [src]="pokemon.sprites.front_default" alt="{{pokemon?.name}}">
+      </div>
+      <div class="title__right">
+        <h1 class="title"><i>#{{pokemon.id}}</i> - {{ pokemon?.name | titlecase }}</h1>
+        <span *ngFor="let item of pokemon?.types">
+          {{ item.type?.name }}
+        </span>
+      </div>
+    </div>
+    <div class="container__stats">
+      <div *ngFor="let poke of pokemon?.stats" class="stats__box">
+          <div class="stats">
+            <p>{{poke?.stat?.name}}</p>
+            <i>icon</i>
+            <p>{{poke?.base_stat}}</p>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

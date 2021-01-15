@@ -1,15 +1,13 @@
 <div class="pokemon__detail">
   <div class="container__form">
+    <h2>logo</h2>
     <form (submit)="submitPokemon($event)">
-      <input class="form__input" type="text">
+      <input class="form__input" type="text" placeholder="Search">
     </form>
   </div>
-  <div class="container__group">
+  <div class="paper container__group">
     <div class="group__col">
-
-    </div>
-    <div class="group__col">
-
+      <app-pokemon-about [pokemon]="pokemon"></app-pokemon-about>
     </div>
   </div>
   <a class="back" [routerLink]="['/']">

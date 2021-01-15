@@ -1,29 +1,46 @@
 @import '../../scss/variebles', '../../scss/mixins';
 
 .pokemon {
-  max-width: 1200px;
+  background-color: #06153e;
   margin: 0 auto;
 
+  &__grid:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #4169E1;
+    top: -10px;
+  }
+
   &__grid {
-    max-width: 100%;
+    position: relative;
+    max-width: $layout-sm;
     margin: 0 auto;
     width: 95%;
     display: grid;
-    grid-auto-rows: 200px;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: 250px;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
     grid-gap: 15px;
     font-family: $secondary-font;
-
+    min-height: 80vh;
   }
 
   &__column {
-    text-align: center;
-    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #102464;
     color: #9e9e9e;
     border-radius: 10px;
     cursor: pointer;
     transition: all .25ms ease-in-out;
     box-shadow: 0px 6px 10px 1px rgba(36, 37, 38, 0.08);
+
+    img {
+      width: 120px;
+      height: 120px;
+    }
 
     &:focus {
       outline: none;
@@ -45,20 +62,23 @@
   }
 
   .container__search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin: 0 auto;
-    text-align: center;
     border-radius: 10px;
-    width: 50%;
+    width: 68%;
+    padding: 15px 6px 25px 6px;
 
     input {
-      margin-top: 24px;
-      margin-bottom: 24px;
-      border-radius: 10px;
       color: #9e9e9e;
-      border: solid 2px tomato;
+      border: none;
+      border-radius: 24px;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 400;
       padding: 10px 15px;
+      width: 320px;
+      background-color: #102464;
 
       &:focus {
         outline: none;
