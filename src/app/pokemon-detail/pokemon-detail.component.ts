@@ -28,7 +28,6 @@ export class PokemonDetailComponent implements OnInit {
       this.pokemonService
         .getPokemonDetail(params.id)
         .subscribe((data: PokemonDetail) => {
-          console.log(data);
           this.pokemon = data;
         });
     });
@@ -38,7 +37,6 @@ export class PokemonDetailComponent implements OnInit {
     this.pokemonService
       .getPokemonDetail(id)
       .subscribe((data: PokemonDetail) => {
-        console.log(data);
         this.pokemon = data;
       });
   }
@@ -47,7 +45,6 @@ export class PokemonDetailComponent implements OnInit {
     event.preventDefault();
     const form = new FormData(event.target);
     const id = form.get('id');
-    console.log(id);
     this.displayPokemon(id);
   }
 

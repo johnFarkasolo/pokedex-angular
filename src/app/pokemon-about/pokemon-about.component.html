@@ -7,7 +7,7 @@
       <div class="title__right">
         <h1 class="title"><i>#{{pokemon.id}}</i> - {{ pokemon?.name | titlecase }}</h1>
         <span *ngFor="let item of pokemon?.types">
-          {{ item.type?.name }}
+          <img class="icon" src="../../assets/icons/{{item.type?.name}}.png" alt=""> - {{ item.type?.name }}
         </span>
       </div>
     </div>

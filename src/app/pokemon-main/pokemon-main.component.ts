@@ -50,7 +50,6 @@ export class PokemonMainComponent implements OnInit {
           sprite: data.sprites.front_default,
           types: data['types'],
           stats: data['stats'],
-          species: data['species'].url,
         };
         this.pokemon.push(pokemonData);
         this.pokemon.sort((array, order) => array.id - order.id);
