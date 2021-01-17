@@ -28,17 +28,10 @@ export class PokemonDetailComponent implements OnInit {
       this.pokemonService
         .getPokemonDetail(params.id)
         .subscribe((data: PokemonDetail) => {
+          // @ts-ignore
           this.pokemon = {...data, sprites: data.sprites.front_default = `https://pokeres.bastionbot.org/images/pokemon/${data.id}.png`};
         });
     });
-  }
-
-  displayPokemon(id) {
-    this.pokemonService
-      .getPokemonDetail(id)
-      .subscribe((data: PokemonDetail) => {
-        console.log(data);
-      });
   }
 
 }
