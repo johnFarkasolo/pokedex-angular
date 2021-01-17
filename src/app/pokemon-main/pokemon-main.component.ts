@@ -14,7 +14,7 @@ export class PokemonMainComponent implements OnInit {
   public sub: any;
   public query: string;
   public offset = 0;
-  public limit = 25;
+  public limit = 100;
 
   constructor(private pokemonService: PokemonService) { }
 
@@ -23,7 +23,7 @@ export class PokemonMainComponent implements OnInit {
   }
 
   onSubmit() {
-    this.offset += 25;
+    this.offset += 100;
     this.getPokemons();
   }
 
@@ -47,7 +47,6 @@ export class PokemonMainComponent implements OnInit {
           name: data.name,
           sprite: data.sprites.front_default,
           types: data['types'],
-          stats: data['stats'],
           isFavorite: false
         };
         this.pokemon.push(pokemonData);

@@ -7,24 +7,17 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    min-height: 100vh;
-
+    min-height: 90vh;
+    max-width: $layout-md;
+    margin: 0 auto;
 
     &__title:after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 3px;
-      background-color: $strip-color;
+      @include strip;
       top: -10px;
     }
 
     &__title:before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 3px;
-      background-color: $strip-color;
+      @include strip;
       bottom: -15px;
     }
 
@@ -32,7 +25,7 @@
       display: flex;
       position: relative;
       text-align: center;
-      border-radius: 8px;
+      border-radius: 10px;
       margin: 15px 10px;
       padding: 20px 0;
       width: 95%;
@@ -63,15 +56,15 @@
 
       .title {
         font-weight: 500;
+
+        &__types span {
+          vertical-align: super;
+        }
       }
     }
 
     &__stats:after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 3px;
-      background-color: $strip-color;
+      @include strip;
       top: -15px;
     }
 
@@ -80,31 +73,41 @@
       position: relative;
       flex-flow: row wrap;
       justify-content: center;
-      margin: 15px 10px;
+      margin: 15px auto;
       background-color: $secondary-theme-color;
       text-align: center;
       width: 95%;
-      border-radius: 8px;
+      border-radius: 10px;
     }
 
     .stats__box {
-      width: 200px;
-      height: 250px;
-      padding: 12px 15px;
+      height: 180px;
+      padding-top: 12px;
       border-radius: 10px;
       color: white;
       font-size: 1.3rem;
+      flex-basis: 15%;
     }
 
     .stats {
       flex: 1;
 
       img {
-        padding-top: 20px;
-        width: 100px;
+        padding-top: 10px;
+        width: 70px;
       }
     }
 
+  }
+}
+
+@media only screen and (max-width: $layout-md) {
+  .pokemon__about {
+    .container__stats {
+      .stats__box {
+        flex-basis: 33%;
+      }
+    }
   }
 }
 
@@ -133,23 +136,29 @@
     .container__title {
       flex-direction: column-reverse;
       justify-content: center;
+
+      .title {
+        font-size: 1.5rem;
+      }
     }
 
     .col__right {
       text-align-last: center;
     }
-  }
-  .container__stats {
-    .stats__box {
-      width: 150px !important;
-      height: 170px !important;
-      font-size: 1rem;
 
-      .stats {
-        font-size: 0.9rem;
+    .container__stats {
+      padding: 0 2%;
+      .stats__box {
+        flex-basis: 175px;
+        height: 150px;
 
-        img {
-          width: 60px;
+        .stats {
+          font-size: 0.9rem;
+
+          img {
+            padding-top: 10px;
+            width: 60px;
+          }
         }
       }
     }
@@ -161,6 +170,17 @@
     .container__title {
       flex-direction: column-reverse;
       justify-content: center;
+      width: 85%;
+    }
+
+    .container__stats {
+      padding: 0;
+      width: 85%;
+
+      .stats__box {
+        flex-basis: 120px;
+        height: 150px;
+      }
     }
 
     .col__right {

@@ -1,13 +1,12 @@
 <div class="pokemon">
   <div class="container__search">
     <a [routerLink]="['/']" class="logo"></a>
-    <input type="text" placeholder="search pokemon" [(ngModel)]="query">
+    <input type="text" placeholder="Search by name or type" [(ngModel)]="query">
   </div>
   <div class="pokemon__grid" *ngIf="pokemon">
-<!--    // next stage added focus on click button '/'-->
     <div class="pokemon__column" *ngFor="let item of pokemon | search: query" [routerLink]="['/pokemon', item?.name]">
       <img [src]="item?.sprite" alt="{{item?.name}}">
-      <p><i>#{{item.id}}</i> - {{item?.name}}</p>
+      <p><i>#{{item.id}}</i> - {{item?.name | titlecase}}</p>
       <div class="types">
         <span *ngFor="let type of item.types">
           <img class="icon" src="../../assets/icons/{{type.type.name}}.png" alt="">

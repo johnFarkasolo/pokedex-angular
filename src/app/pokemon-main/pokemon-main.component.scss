@@ -30,6 +30,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     background-color: $secondary-theme-color;
     color: $white-color;
     border-radius: 10px;
@@ -88,23 +89,7 @@
     }
 
     input {
-      color: #9e9e9e;
-      border: none;
-      border-radius: 24px;
-      font-size: 14px;
-      font-weight: 400;
-      padding: 10px 15px;
-      width: 320px;
-      background-color: $secondary-theme-color;
-
-      &:focus {
-        outline: none;
-      }
-
-      &::placeholder {
-        opacity: 0.5;
-        font-weight: 400;
-      }
+      @include input-form;
     }
   }
 
@@ -139,18 +124,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .logo {
+      margin-bottom: 10px;
+    }
   }
 }
 
 @media only screen and (max-width: $layout-xxs) {
   .pokemon {
     &__grid {
-      width: 75%;
+      width: 85%;
     }
     .container__search {
       input {
-        width: 80%;
-
+        width: 224px;
       }
     }
   }
