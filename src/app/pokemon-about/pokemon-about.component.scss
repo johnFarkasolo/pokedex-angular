@@ -7,24 +7,17 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    min-height: 80vh;
-
+    min-height: 90vh;
+    max-width: $layout-md;
+    margin: 0 auto;
 
     &__title:after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 3px;
-      background-color: $strip-color;
+      @include strip;
       top: -10px;
     }
 
     &__title:before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 3px;
-      background-color: $strip-color;
+      @include strip;
       bottom: -15px;
     }
 
@@ -71,11 +64,7 @@
     }
 
     &__stats:after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 3px;
-      background-color: $strip-color;
+      @include strip;
       top: -15px;
     }
 
@@ -84,7 +73,7 @@
       position: relative;
       flex-flow: row wrap;
       justify-content: center;
-      margin: 15px 10px;
+      margin: 15px auto;
       background-color: $secondary-theme-color;
       text-align: center;
       width: 95%;
@@ -92,23 +81,33 @@
     }
 
     .stats__box {
-      width: 200px;
-      height: 205px;
-      padding: 12px 15px;
+      height: 180px;
+      padding-top: 12px;
       border-radius: 10px;
       color: white;
       font-size: 1.3rem;
+      flex-basis: 16%;
     }
 
     .stats {
       flex: 1;
 
       img {
-        padding-top: 20px;
-        width: 80px;
+        padding-top: 10px;
+        width: 70px;
       }
     }
 
+  }
+}
+
+@media only screen and (max-width: $layout-md) {
+  .pokemon__about {
+    .container__stats {
+      .stats__box {
+        flex-basis: 33%;
+      }
+    }
   }
 }
 
@@ -125,6 +124,12 @@
         padding-left: 0;
       }
     }
+
+    .container__stats {
+      .stats__box {
+      }
+    }
+
   }
 
 }
@@ -137,6 +142,10 @@
     .container__title {
       flex-direction: column-reverse;
       justify-content: center;
+
+      .title {
+        font-size: 1.5rem;
+      }
     }
 
     .col__right {
@@ -145,11 +154,8 @@
 
     .container__stats {
       .stats__box {
-        width: 130px;
+        flex-basis: 180px;
         height: 150px;
-        font-size: 1rem;
-        padding: 12px 0 0 0;
-
 
         .stats {
           font-size: 0.9rem;
@@ -174,6 +180,11 @@
 
     .container__stats {
       width: 85%;
+
+      .stats__box {
+        flex-basis: 120px;
+        height: 150px;
+      }
     }
 
     .col__right {

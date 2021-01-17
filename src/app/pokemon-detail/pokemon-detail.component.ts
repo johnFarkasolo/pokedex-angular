@@ -28,7 +28,7 @@ export class PokemonDetailComponent implements OnInit {
       this.pokemonService
         .getPokemonDetail(params.id)
         .subscribe((data: PokemonDetail) => {
-          this.pokemon = data;
+          this.pokemon = {...data, sprites: data.sprites.front_default = `https://pokeres.bastionbot.org/images/pokemon/${data.id}.png`};
         });
     });
   }
@@ -37,18 +37,8 @@ export class PokemonDetailComponent implements OnInit {
     this.pokemonService
       .getPokemonDetail(id)
       .subscribe((data: PokemonDetail) => {
-        this.pokemon = data;
+        console.log(data);
       });
-  }
-
-  submitPokemon(event) {
-    event.preventDefault();
-    console.log(event.target)
-    const form = new FormData(event.target);
-    const id = form.get('id');
-    console.log('id:', id);
-    console.log('form:', form);
-    this.displayPokemon(id);
   }
 
 }

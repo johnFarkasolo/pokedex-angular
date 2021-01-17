@@ -30,6 +30,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     background-color: $secondary-theme-color;
     color: $white-color;
     border-radius: 10px;
@@ -138,7 +139,6 @@
     .container__search {
       input {
         width: 224px;
-
       }
     }
   }

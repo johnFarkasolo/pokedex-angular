@@ -4,7 +4,6 @@ export class PokemonDetail {
   sprites: Sprites;
   types: Types;
   stats: Stats;
-  isFavorite: boolean;
 }
 
 export interface Sprites {

@@ -9,6 +9,14 @@
   };
 }
 
+@mixin strip {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: $strip-color;
+}
+
 @mixin input-form {
   font: {
     size: 14px;
