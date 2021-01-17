@@ -86,7 +86,7 @@
       border-radius: 10px;
       color: white;
       font-size: 1.3rem;
-      flex-basis: 16%;
+      flex-basis: 15%;
     }
 
     .stats {
@@ -124,12 +124,6 @@
         padding-left: 0;
       }
     }
-
-    .container__stats {
-      .stats__box {
-      }
-    }
-
   }
 
 }
@@ -153,8 +147,9 @@
     }
 
     .container__stats {
+      padding: 0 2%;
       .stats__box {
-        flex-basis: 180px;
+        flex-basis: 175px;
         height: 150px;
 
         .stats {
@@ -179,6 +174,7 @@
     }
 
     .container__stats {
+      padding: 0;
       width: 85%;
 
       .stats__box {
