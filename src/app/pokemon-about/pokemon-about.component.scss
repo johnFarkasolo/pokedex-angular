@@ -7,7 +7,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 80vh;
 
 
     &__title:after {
@@ -32,7 +32,7 @@
       display: flex;
       position: relative;
       text-align: center;
-      border-radius: 8px;
+      border-radius: 10px;
       margin: 15px 10px;
       padding: 20px 0;
       width: 95%;
@@ -63,6 +63,10 @@
 
       .title {
         font-weight: 500;
+
+        &__types span {
+          vertical-align: super;
+        }
       }
     }
 
@@ -84,12 +88,12 @@
       background-color: $secondary-theme-color;
       text-align: center;
       width: 95%;
-      border-radius: 8px;
+      border-radius: 10px;
     }
 
     .stats__box {
       width: 200px;
-      height: 250px;
+      height: 205px;
       padding: 12px 15px;
       border-radius: 10px;
       color: white;
@@ -101,7 +105,7 @@
 
       img {
         padding-top: 20px;
-        width: 100px;
+        width: 80px;
       }
     }
 
@@ -138,18 +142,22 @@
     .col__right {
       text-align-last: center;
     }
-  }
-  .container__stats {
-    .stats__box {
-      width: 150px !important;
-      height: 170px !important;
-      font-size: 1rem;
 
-      .stats {
-        font-size: 0.9rem;
+    .container__stats {
+      .stats__box {
+        width: 130px;
+        height: 150px;
+        font-size: 1rem;
+        padding: 12px 0 0 0;
 
-        img {
-          width: 60px;
+
+        .stats {
+          font-size: 0.9rem;
+
+          img {
+            padding-top: 10px;
+            width: 60px;
+          }
         }
       }
     }
@@ -161,6 +169,11 @@
     .container__title {
       flex-direction: column-reverse;
       justify-content: center;
+      width: 85%;
+    }
+
+    .container__stats {
+      width: 85%;
     }
 
     .col__right {
