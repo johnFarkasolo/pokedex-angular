@@ -11,14 +11,16 @@ import {PokemonList} from '../shared/models/pokemon.list';
 export class PokemonMainComponent implements OnInit {
   public pokemons: any;
   public pokemon: any = [];
-  public sub: any;
   public query: string;
   public offset = 0;
   public limit = 100;
 
-  constructor(private pokemonService: PokemonService) { }
+  public isFavorite = true;
 
-  ngOnInit(): void{
+  constructor(private pokemonService: PokemonService) {
+  }
+
+  ngOnInit(): void {
     this.getPokemons();
   }
 
@@ -46,12 +48,11 @@ export class PokemonMainComponent implements OnInit {
           id: data.id,
           name: data.name,
           sprite: data.sprites.front_default,
-          types: data['types'],
-          isFavorite: false
+          types: data.types,
         };
         this.pokemon.push(pokemonData);
         this.pokemon.sort((array, order) => array.id - order.id);
       });
   }
-
 }
+
